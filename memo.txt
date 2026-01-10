@@ -1,0 +1,4 @@
+I2C
+pip install --update pip
+sudo apt update 
+sudo apt upgrade
