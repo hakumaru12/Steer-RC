@@ -26,20 +26,20 @@ servo_motor = servo.Servo(servo_channel, min_pulse=500, max_pulse=2500)
 reverse_ready = False
 
 def initialize_esc():
-    """ESCの初期化"""
-    print("ESC初期化開始")
+    """ESC initialization"""
+    print("ESC initialization started")
     esc_channel.duty_cycle = int(0.095 * 65535)
     time.sleep(2)
-    print("ESC初期化完了")
+    print("ESC initialization complete")
 
 def set_neutral():
-    """ニュートラルに設定"""
+    """Set to neutral"""
     esc_channel.duty_cycle = int(0.095 * 65535)
 
 def set_esc_speed(throttle_percent, direction):
     """
-    ESCの速度を設定（0-100%）
-    direction: 1=前進, -1=後退
+    Set ESC speed (0-100%)
+    direction: 1=forward, -1=reverse
     """
     if throttle_percent == 0:
         duty_percent = ESC_Default_Duty
@@ -55,19 +55,19 @@ def set_esc_speed(throttle_percent, direction):
 
 def do_double_back():
     """ダブルバック操作を実行"""
-    print("ダブルバック実行中...")
-    set_esc_speed(30, -1)
+    print("Setting back fase...")
+    set_esc_speed(10, -1)
     time.sleep(0.15)
     set_neutral()
     time.sleep(0.15)
-    print("ダブルバック完了 - 後退可能")
+    print("Back fase set - Reverse ready")
 
 def main():
     global reverse_ready
     
     initialize_esc()
     
-    print("UDP通信待機中...")
+    print("UDP communication waiting...")
     sock.settimeout(0.5)
     
     try:
@@ -95,7 +95,7 @@ def main():
                 continue
             
     except KeyboardInterrupt:
-        print("\nプログラムを終了します")
+        print("\n Program terminated")
     finally:
         set_esc_speed(0, 1)
         time.sleep(0.5)
