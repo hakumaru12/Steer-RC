@@ -2,19 +2,20 @@
 import socket
 import struct
 import time
-from adafruit_pca9685 import PCA9685
-from adafruit_motor import servo, motor
-import board
-import busio
+from adafruit_pca9685 import PCA9685 # type: ignore
+from adafruit_motor import servo, motor # type: ignore
+import board # type: ignore
+import busio # type: ignore
 
 UDP_IP = "0.0.0.0"
 UDP_PORT = 5005
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 sock.bind((UDP_IP, UDP_PORT))
-ESC_Default_Duty = 0.075  
 i2c = busio.I2C(board.SCL, board.SDA)
 pca = PCA9685(i2c)
 pca.frequency = 50  # 50Hz
+
+ESC_Default_Duty = 0.075  # ESCのニュートラル位置
 
 servo_channel = pca.channels[0]  # サーボモータ用
 esc_channel = pca.channels[1]    # ESC用

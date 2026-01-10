@@ -1,5 +1,5 @@
 #Windows PC 側のコード
-import pygame
+import pygame # type: ignore
 import socket
 import struct
 import time
