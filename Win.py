@@ -4,7 +4,7 @@ import socket
 import struct
 import time
 
-UDP_IP = "192.168.11.3"  # Raspberry Pi IP address
+UDP_IP = "192.168.11.2"  # Raspberry Pi IP address
 UDP_PORT = 5005
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
