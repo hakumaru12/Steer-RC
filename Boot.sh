@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TARGET_SSID="BF-HSKK-2.4G"
-MOMO_DIR="/home/usr/momo"
+MOMO_DIR="/home/haku12/momo"
 
 echo "=============================="
 echo "Waiting for Wi-Fi - $TARGET_SSID"
@@ -14,7 +14,15 @@ while true; do
 	sleep 2
 done
 
+IP_ADDR=$(hostname -I | awk '{print $1}')
+
 echo "Wi-Fi connected!"
+
+echo "=============================="
+echo "SSID: $SSID"
+echo "IP Address: $IP_ADDR"
+echo "=============================="
+
 echo "Starting streaming by momo"
 cd "$MOMO_DIR"
 if ! tmuc has-session -t momo 2>/dev/null; then
@@ -22,4 +30,4 @@ if ! tmuc has-session -t momo 2>/dev/null; then
 fi
 echo "Streaming started!"
 echo "Starting raspy.py (RC controll)"
-python3 /home/usr/raspi.py
+python3 /home/haku12/raspi.py

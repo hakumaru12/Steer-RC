@@ -28,13 +28,13 @@ reverse_ready = False
 def initialize_esc():
     """ESC initialization"""
     print("ESC initialization started")
-    esc_channel.duty_cycle = int(0.095 * 65535)
+    esc_channel.duty_cycle = int(ESC_Default_Duty * 65535)
     time.sleep(2)
     print("ESC initialization complete")
 
 def set_neutral():
     """Set to neutral"""
-    esc_channel.duty_cycle = int(0.095 * 65535)
+    esc_channel.duty_cycle = int(ESC_Default_Duty * 65535)
 
 def set_esc_speed(throttle_percent, direction):
     """
