@@ -25,7 +25,7 @@ echo "=============================="
 
 echo "Starting streaming by momo"
 cd "$MOMO_DIR"
-if ! tmuc has-session -t momo 2>/dev/null; then
+if ! tmux has-session -t momo 2>/dev/null; then
 	tmux new-session -d -s momo "./momo --no-audio-device p2p"
 fi
 echo "Streaming started!"
